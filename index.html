@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Causeway — Focus on your work, we'll help handle the rest</title>
+<title>Causeway | Focus on your work, we'll help handle the rest</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/mohitxmehta-amworks/causeway/f1b6da73f6153925346fb67ea1fe8071fc58eefb/assets/favicon.svg">
 <style>
@@ -427,8 +427,14 @@
 
   .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
+  }
+  @media (max-width: 900px) {
+    .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .benefits-grid { grid-template-columns: 1fr; }
   }
 
   .benefit-card {
@@ -453,6 +459,10 @@
   }
 
   .benefit-card:hover::before { transform: scaleX(1); }
+
+  a.benefit-card { text-decoration: none; color: inherit; display: block; }
+  a.benefit-card .card-link { display: inline-block; margin-top: 0.9rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); }
+  a.benefit-card .card-link::after { content: ' \2192'; }
 
   .benefit-card:hover {
     transform: translateY(-4px);
@@ -747,6 +757,8 @@
   <a href="#" class="nav-logo">Causeway</a>
   <ul class="nav-links">
     <li><a href="#the-problem">The Problem</a></li>
+    <li><a href="accounting.html">Accounting</a></li>
+    <li><a href="legal.html">Legal</a></li>
     <li><a href="#how-it-works">How It Works</a></li>
     <li><a href="#ready-to-join" class="cta-link">Ready to Join</a></li>
   </ul>
@@ -760,6 +772,8 @@
 <div class="drawer" id="drawer">
   <div class="drawer-brand">Causeway</div>
   <a href="#the-problem" class="drawer-link">The Problem</a>
+  <a href="accounting.html" class="drawer-link">Accounting</a>
+  <a href="legal.html" class="drawer-link">Legal</a>
   <a href="#how-it-works" class="drawer-link">How It Works</a>
   <a href="#ready-to-join" class="drawer-cta">Ready to Join</a>
 </div>
@@ -769,7 +783,7 @@
   <canvas id="heroCanvas"></canvas>
 
   <div class="hero-text">
-    <h1>Focus on your work — <em>we'll help handle the rest</em></h1>
+    <h1>Focus on your work. <em>We'll help handle the rest</em></h1>
     <p class="hero-sub">Healthcare, legal, accounting, and community: built for creators, freelancers, and independent professionals</p>
     <p class="hero-emphasis">Individual proprietors don't get the same access to healthcare, legal, or accounting support as full time employees do.<br><strong>We're fixing that.</strong></p>
     <a href="#ready-to-join" class="hero-cta">Get Started</a>
@@ -934,11 +948,18 @@
         <h3>Healthcare</h3>
         <p>Health, dental, and vision insurance on par with Fortune 500 companies.</p>
       </div>
-      <div class="benefit-card">
+      <a href="accounting.html" class="benefit-card">
         <div class="benefit-icon">§</div>
-        <h3>Legal & Accounting</h3>
-        <p>Vetted professionals at below-market rates.</p>
-      </div>
+        <h3>Accounting</h3>
+        <p>We connect you with a vetted bookkeeper who handles your books and filings, at member rates.</p>
+        <span class="card-link">See plans</span>
+      </a>
+      <a href="legal.html" class="benefit-card">
+        <div class="benefit-icon">¶</div>
+        <h3>Legal</h3>
+        <p>We connect you with a vetted attorney for formation, contracts, and coverage, at member rates.</p>
+        <span class="card-link">See legal</span>
+      </a>
       <div class="benefit-card">
         <div class="benefit-icon">◉</div>
         <h3>Community</h3>
@@ -963,7 +984,7 @@
       <div class="step">
         <div class="step-num">2</div>
         <h3>Get Onboarded</h3>
-        <p>Our team helps you select the right resources — community, healthcare, legal, and accounting.</p>
+        <p>Our team helps you select the right resources: community, healthcare, legal, and accounting.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
@@ -1024,7 +1045,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span>Built by the team that brought you the Better Internet Initiative — <a href="http://betterinternetinitiative.org" target="_blank">betterinternetinitiative.org</a></span>
+  <span>Built by the team that brought you the Better Internet Initiative. <a href="http://betterinternetinitiative.org" target="_blank">betterinternetinitiative.org</a></span>
   <span>Causeway © 2026 &nbsp;·&nbsp; Contact: <a href="mailto:info@gocauseway.com">info@gocauseway.com</a></span>
 </footer>
 
