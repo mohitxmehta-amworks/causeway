@@ -767,6 +767,36 @@
 
   .success-state p { color: rgba(255,255,255,0.5); font-size: 0.9rem; animation: riseIn 0.6s ease 0.35s both; }
 
+  /* ─── BEHIND THIS (BII credit) ─── */
+  .behind {
+    background: var(--off-white);
+    border-top: 1px solid var(--border);
+    padding: 3.5rem 2rem;
+    text-align: center;
+  }
+  .behind .container { max-width: 720px; }
+  .behind .behind-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .behind p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .behind p a {
+    color: var(--blue);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1.5px solid rgba(36,36,255,0.3);
+    transition: border-color 0.2s;
+  }
+  .behind p a:hover { border-bottom-color: var(--blue); }
+
   /* ─── FOOTER ─── */
   footer {
     padding: 1.5rem 3.5rem;
@@ -1015,11 +1045,12 @@
     <p class="pricing-note">$250 a year, waived for the first year.</p>
 
     <div class="benefits-grid">
-      <div class="benefit-card">
+      <a href="#ready-to-join" class="benefit-card">
         <div class="benefit-icon">+</div>
         <h3>Healthcare</h3>
         <p>Health, dental, and vision insurance on par with Fortune 500 companies.</p>
-      </div>
+        <span class="card-link">Learn more</span>
+      </a>
       <a href="accounting.html" class="benefit-card">
         <div class="benefit-icon">§</div>
         <h3>Accounting</h3>
@@ -1130,10 +1161,18 @@
   </div>
 </section>
 
+<!-- BEHIND THIS -->
+<section class="behind">
+  <div class="container">
+    <p class="behind-label">Who's behind this</p>
+    <p>Built by the team behind the <a href="http://betterinternetinitiative.org/" target="_blank" rel="noopener">Better Internet Initiative</a>.</p>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
-  <span>Built by the team that brought you the Better Internet Initiative. <a href="http://betterinternetinitiative.org" target="_blank">betterinternetinitiative.org</a></span>
-  <span>Causeway © 2026 &nbsp;·&nbsp; Contact: <a href="mailto:info@gocauseway.com">info@gocauseway.com</a></span>
+  <span>Causeway © 2026</span>
+  <span>Contact: <a href="mailto:info@gocauseway.com">info@gocauseway.com</a></span>
 </footer>
 
 <script>
