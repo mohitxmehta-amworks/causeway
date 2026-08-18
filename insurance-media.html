@@ -722,8 +722,9 @@
 
   // ─── FORM SUBMISSION ───
   // Same Google Apps Script intake pattern as the main site.
-  // Point this at the media-liability intake Sheet's /exec URL.
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHxFbdmpT42ktITpWKkDm_ZCjkZk1jTZsOaz7Oy-ZvREa2XfXMC6Amhf6uH8bZ374Htg/exec';
+  // Point this at the SHARED Causeway intake endpoint (same as index.html /
+  // membership.html). Routing is handled server-side on form_type.
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby8iXQih_TXKntUPbC5rzmSvd-ME7RCjklVITLzvVZ-FckQh_JDv_rpXhEjGqHR-NnqcQ/exec';
 
   document.getElementById('onboardForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -753,6 +754,7 @@
       revenue_next: form.revenue_next.value.trim(),
       headcount: form.headcount.value.trim(),
       comments: form.comments.value.trim(),
+      form_type: 'media_liability',
       source: 'insurance-media',
       timestamp: new Date().toISOString()
     };
@@ -772,7 +774,7 @@
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
       form.style.display = 'none';
