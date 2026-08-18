@@ -338,21 +338,15 @@
           <input type="email" name="email" placeholder="you@example.com" required>
         </div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label>Phone <span class="opt">(optional)</span></label>
-            <input type="tel" name="phone" placeholder="(555) 123-4567">
-          </div>
-          <div class="form-group">
-            <label>Pronouns <span class="opt">(optional)</span></label>
-            <input type="text" name="pronouns" placeholder="e.g. she/her, they/them">
-          </div>
+        <div class="form-group">
+          <label>Phone <span class="opt">(optional)</span></label>
+          <input type="tel" name="phone" placeholder="(555) 123-4567">
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label>City <span class="opt">(optional)</span></label>
-            <input type="text" name="city" placeholder="City">
+            <label>City <span class="req">*</span></label>
+            <input type="text" name="city" placeholder="City" required>
           </div>
           <div class="form-group">
             <label>State of residence <span class="req">*</span></label>
@@ -417,6 +411,12 @@
         </div>
 
         <div class="form-group">
+          <label>Other social handles <span class="opt">(optional)</span></label>
+          <input type="text" name="social_other" placeholder="Any other platforms — e.g. Instagram @you, LinkedIn, YouTube">
+          <p class="field-hint">List any additional handles or profiles you'd like us to know about.</p>
+        </div>
+
+        <div class="form-group">
           <label>How long have you been working independently? <span class="opt">(optional)</span></label>
           <div class="choice-grid">
             <label class="choice-item"><input type="radio" name="experience" value="Just starting"><span>Just starting out</span></label>
@@ -436,14 +436,26 @@
         </div>
 
         <div class="form-group">
-          <label>How is your work currently structured? <span class="req">*</span></label>
+          <label>What's your current legal structure? <span class="req">*</span></label>
           <div class="choice-grid single-col">
-            <label class="choice-item"><input type="radio" name="entity_status" value="No entity"><span>Just me — no formal business entity yet</span></label>
-            <label class="choice-item"><input type="radio" name="entity_status" value="Sole prop"><span>Sole proprietor</span></label>
-            <label class="choice-item"><input type="radio" name="entity_status" value="LLC"><span>I have an LLC</span></label>
+            <label class="choice-item"><input type="radio" name="entity_status" value="No entity"><span>No formal entity yet — I work as an individual</span></label>
+            <label class="choice-item"><input type="radio" name="entity_status" value="Sole prop"><span>Sole proprietor / DBA</span></label>
+            <label class="choice-item"><input type="radio" name="entity_status" value="LLC"><span>LLC</span></label>
             <label class="choice-item"><input type="radio" name="entity_status" value="S-corp / C-corp"><span>S-corp or C-corp</span></label>
+            <label class="choice-item"><input type="radio" name="entity_status" value="Partnership"><span>Partnership</span></label>
             <label class="choice-item"><input type="radio" name="entity_status" value="Not sure"><span>Not sure</span></label>
           </div>
+        </div>
+
+        <div class="form-group">
+          <label>How many people are in your operation? <span class="req">*</span></label>
+          <div class="choice-grid">
+            <label class="choice-item"><input type="radio" name="team_size" value="Just me"><span>Just me</span></label>
+            <label class="choice-item"><input type="radio" name="team_size" value="2-3"><span>2–3 people</span></label>
+            <label class="choice-item"><input type="radio" name="team_size" value="4-10"><span>4–10 people</span></label>
+            <label class="choice-item"><input type="radio" name="team_size" value="10+"><span>More than 10</span></label>
+          </div>
+          <p class="field-hint">Count anyone you regularly work with — collaborators, contractors, or employees.</p>
         </div>
 
         <div class="form-group">
@@ -478,7 +490,7 @@
         <div class="form-group">
           <label>Which services interest you? <span class="req">*</span></label>
           <div class="choice-grid">
-            <label class="choice-item"><input type="checkbox" name="service" value="Healthcare"><span>Healthcare access</span></label>
+            <label class="choice-item"><input type="checkbox" name="service" value="Health insurance"><span>Health insurance</span></label>
             <label class="choice-item"><input type="checkbox" name="service" value="Legal"><span>Legal support</span></label>
             <label class="choice-item"><input type="checkbox" name="service" value="Accounting"><span>Accounting / bookkeeping</span></label>
             <label class="choice-item"><input type="checkbox" name="service" value="Entity formation"><span>Forming an LLC</span></label>
@@ -583,7 +595,7 @@
   });
 
   // ─── FORM SUBMISSION ───
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxXYMG8CbxT8O6ehLPaKQO14YoeGl27blaQa8UlFC0fR2Rv8Yk_lf-oDu8l9Zf5Liyi/exec';
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzsAFuwhYD_svhZYuQPTf1kTNpD5NXwlQQcGs0KmASITAyDTCDiVrK9eA4wJJqERPCN/exec';
 
   document.getElementById('memberForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -611,15 +623,16 @@
       last_name: form.last_name.value.trim(),
       email: form.email.value.trim(),
       phone: form.phone.value.trim(),
-      pronouns: form.pronouns.value.trim(),
       city: form.city.value.trim(),
       state: form.state.value,
       disciplines: disciplines.join(', '),
       work_description: form.work_description.value.trim(),
       website: form.website.value.trim(),
       social: form.social.value.trim(),
+      social_other: form.social_other.value.trim(),
       experience: (form.querySelector('input[name="experience"]:checked') || {}).value || '',
       entity_status: (form.querySelector('input[name="entity_status"]:checked') || {}).value || '',
+      team_size: (form.querySelector('input[name="team_size"]:checked') || {}).value || '',
       insurance_status: (form.querySelector('input[name="insurance_status"]:checked') || {}).value || '',
       accounting_status: (form.querySelector('input[name="accounting_status"]:checked') || {}).value || '',
       services: services.join(', '),
