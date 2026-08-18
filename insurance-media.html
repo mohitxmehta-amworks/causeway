@@ -721,9 +721,6 @@
   });
 
   // ─── FORM SUBMISSION ───
-  // Same Google Apps Script intake pattern as the main site.
-  // Point this at the SHARED Causeway intake endpoint (same as index.html /
-  // membership.html). Routing is handled server-side on form_type.
   const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby8iXQih_TXKntUPbC5rzmSvd-ME7RCjklVITLzvVZ-FckQh_JDv_rpXhEjGqHR-NnqcQ/exec';
 
   document.getElementById('onboardForm').addEventListener('submit', async function(e) {
@@ -754,8 +751,6 @@
       revenue_next: form.revenue_next.value.trim(),
       headcount: form.headcount.value.trim(),
       comments: form.comments.value.trim(),
-      form_type: 'media_liability',
-      source: 'insurance-media',
       timestamp: new Date().toISOString()
     };
 
