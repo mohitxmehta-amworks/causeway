@@ -313,6 +313,24 @@
   @media (max-width: 768px) {
     .choice-grid.cols-3 { grid-template-columns: 1fr; }
   }
+
+  /* ─── CONTRACT SECTION ─── */
+  #contract { background: var(--off-white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  #contract .section-sub { margin-bottom: 3rem; }
+  .contract-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .contract-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 2rem 1.7rem; display: flex; flex-direction: column; }
+  .contract-card .num { font-family: 'Instrument Serif', serif; font-size: 2.4rem; line-height: 1; color: var(--blue); margin-bottom: 0.9rem; }
+  .contract-card h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 0.7rem; }
+  .contract-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+  .cost-list { list-style: none; margin-top: 0.3rem; display: flex; flex-direction: column; gap: 0.55rem; }
+  .cost-list li { font-size: 0.86rem; color: var(--text); line-height: 1.5; padding-left: 1.35rem; position: relative; }
+  .cost-list li::before { content: ''; position: absolute; left: 0; top: 0.42em; width: 0.55rem; height: 0.55rem; background: var(--orange); border-radius: 2px; }
+  .cost-list li.remainder { padding-left: 0; margin-top: 0.6rem; padding-top: 0.8rem; border-top: 1px solid var(--border); font-weight: 600; color: var(--blue); }
+  .cost-list li.remainder::before { display: none; }
+  .contract-note { margin-top: 2rem; font-size: 0.9rem; color: var(--muted); line-height: 1.7; max-width: 720px; }
+  .contract-note strong { color: var(--text); font-weight: 600; }
+  .contract-caveat { margin-top: 1.4rem; padding: 1.05rem 1.3rem; background: rgba(255,75,43,0.06); border-left: 3px solid var(--orange); border-radius: 0 8px 8px 0; font-size: 0.85rem; line-height: 1.65; color: var(--muted); max-width: 720px; }
+  @media (max-width: 900px) { .contract-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -344,8 +362,8 @@
   <div class="container">
     <p class="section-label">Healthcare</p>
     <h1>Group health, <em>for people who work alone.</em></h1>
-    <p>Independent creators get priced as a group of one. Causeway is building a route to group coverage for its members, so the rates you see reflect a pool rather than a single household.</p>
-    <p class="lede-strong">Share a few basics below and we'll come back with what's actually available to you, what it costs, and when it can start.</p>
+    <p>Independent creators get priced as a group of one. Causeway members get into a large-group plan instead, by being employed part-time through Causeway.</p>
+    <p class="lede-strong">That employment has to be real, which means income has to run through it. The floor is a $25,000 annual contract, and it can arrive in as many as four quarterly payments. The section below explains exactly how that works before you fill anything out.</p>
     <div class="member-note">
       <strong>Members only.</strong> Healthcare support is available to Causeway members. If you haven't joined yet, <a href="membership.html">fill out the membership form</a> first and we'll pick this up right after.
     </div>
@@ -358,27 +376,66 @@
     <p class="section-label">How it works</p>
     <div class="covers-wrap">
       <div class="covers-copy">
-        <h2>Rates that come from a pool, not a household.</h2>
-        <p>On the individual market, a solo creator is rated as one person. Group coverage works differently. Pooling members changes the pricing basis, which is the single biggest lever on what you pay for comparable coverage.</p>
-        <p>Causeway handles the administrative side so you don't have to stand up an employer benefits operation by yourself. We are not an insurer or a broker of record for your current plan. We connect members to coverage and walk through the options with you.</p>
+        <h2>Coverage comes with employment.</h2>
+        <p>The reason a solo creator pays individual-market rates is that there is no employer in the picture. Causeway becomes one. You are employed part-time by Causeway through Justworks, our PEO, and that is what puts you inside a large-group plan instead of a pool of one.</p>
+        <p>For that to hold up, the employment has to be genuine. You have to be paid, and the money has to come from somewhere real. So we either sign a contract on your behalf with one of your clients, or you route an existing income source through Causeway. Either way it has to total at least $25,000 a year.</p>
+        <p>The money stays yours. It covers your premiums, your payroll taxes, and the Justworks fee. Everything left over is paid to you as wages.</p>
         <ul>
-          <li>Medical, with dental and vision options</li>
+          <li>Large-group medical, with dental and vision options</li>
           <li>Coverage for spouses, partners, and children</li>
-          <li>A real person to walk through plan tiers with you</li>
-          <li>Enrollment handled, not left on your to-do list</li>
+          <li>Payroll, withholding, and filings handled through Justworks</li>
+          <li>W-2 wages on record instead of loose 1099 income</li>
         </ul>
       </div>
       <div class="info-card">
         <p class="kicker">What happens next</p>
         <h3>From a few fields to an enrollment.</h3>
         <ul class="step-list">
-          <li><span class="n">1</span><span>You share the census basics below. Takes about three minutes.</span></li>
-          <li><span class="n">2</span><span>We confirm your membership and check eligibility for your state.</span></li>
-          <li><span class="n">3</span><span>We set up a short call and walk through the plans and pricing that apply to you.</span></li>
-          <li><span class="n">4</span><span>If it works, we handle enrollment and the paperwork behind it.</span></li>
+          <li><span class="n">1</span><span>You share the census basics and your income source below. Takes about five minutes.</span></li>
+          <li><span class="n">2</span><span>We confirm membership, check plan availability in your state, and talk through which of your contracts or clients can route through Causeway.</span></li>
+          <li><span class="n">3</span><span>We paper the contract, you sign a part-time employment agreement, and you onboard to Justworks.</span></li>
+          <li><span class="n">4</span><span>You pick a plan, coverage starts, and payroll begins running.</span></li>
         </ul>
-        <p class="detail">Submitting this is not an enrollment and not a commitment. It is the information a carrier needs before anyone can quote you accurately.</p>
+        <p class="detail">Submitting this is not an enrollment and not a commitment. If the $25,000 floor doesn't work for your situation, we will tell you that directly rather than start something that won't hold up.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE $25K MINIMUM -->
+<section id="contract">
+  <div class="container">
+    <p class="section-label">The $25,000 minimum</p>
+    <h2 class="section-title">Where the money comes from.</h2>
+    <p class="section-sub">This is the part people have the most questions about, so here it is plainly. Nothing below is a fee you pay Causeway. It is your own income, running through a structure that makes group coverage possible.</p>
+
+    <div class="contract-grid">
+      <div class="contract-card">
+        <div class="num">1</div>
+        <h3>A contract or an income source</h3>
+        <p>Either Causeway signs a contract on your behalf with one of your clients, or you route income you already have through Causeway. A brand deal, a retainer, a production budget, a grant. It has to be real work with a real payer.</p>
+      </div>
+      <div class="contract-card">
+        <div class="num">2</div>
+        <h3>$25,000 a year, in up to four payments</h3>
+        <p>Twenty-five thousand is a hard floor, not a target. It can arrive as one payment or split into as many as four quarterly tranches. Below that number the employment doesn't hold up, and we would rather say so early than unwind it later.</p>
+      </div>
+      <div class="contract-card">
+        <div class="num">3</div>
+        <h3>What comes out of it</h3>
+        <ul class="cost-list">
+          <li>Your health premiums</li>
+          <li>Payroll taxes</li>
+          <li>$110 a month for Justworks</li>
+          <li class="remainder">Everything else is paid to you as wages, net of withholding.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="contract-note"><strong>Causeway does not take a margin on the contract.</strong> The money that comes in is yours. It passes through payroll, covers the three items above, and the rest lands in your account as W-2 wages. The reason the contract has to exist at all is that group coverage runs through employment, and employment runs through pay.</p>
+
+    <div class="contract-caveat">
+      This describes the structure as we are building it, and the underlying agreements are being finalized with counsel. Specific terms, eligibility, and timing may change. None of this is tax, legal, or benefits advice, and you should talk to your own accountant about how running income through payroll affects your situation.
     </div>
   </div>
 </section>
@@ -389,7 +446,7 @@
     <div class="form-head">
       <p class="section-label" style="color:var(--orange);">Get Started</p>
       <h2 class="section-title">Start your healthcare file</h2>
-      <p class="form-intro">This is the top section of a health census, the baseline a carrier needs before quoting. Nothing here is medical history and none of it is an application.</p>
+      <p class="form-intro">Two parts: the top section of a health census, which is the baseline a carrier needs before quoting, and a few questions about the income source behind the employment. Nothing here is medical history and none of it is an application.</p>
     </div>
 
     <form id="onboardForm" autocomplete="on">
@@ -441,7 +498,44 @@
         </div>
       </div>
 
-      <!-- 3. CENSUS BASICS -->
+      <!-- 3. YOUR INCOME SOURCE -->
+      <div class="fieldset">
+        <div class="fieldset-title">Your income source</div>
+        <p class="fieldset-note">This is the $25,000 piece described above. If you're not sure yet, say so. It's a conversation, not a disqualifier at this stage.</p>
+
+        <div class="form-group">
+          <label>Do you have a contract or income source that could route through Causeway? <span class="req">*</span></label>
+          <div class="choice-grid">
+            <label class="choice-item"><input type="radio" name="has_source" value="Yes, identified" required><span>Yes, and I know which one</span></label>
+            <label class="choice-item"><input type="radio" name="has_source" value="Yes, needs confirming"><span>Probably, but I'd need to confirm</span></label>
+            <label class="choice-item"><input type="radio" name="has_source" value="Not yet"><span>Not right now</span></label>
+            <label class="choice-item"><input type="radio" name="has_source" value="Unclear"><span>I don't understand this yet</span></label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Estimated annual value <span class="opt">(optional)</span></label>
+            <div class="input-prefix"><span>$</span><input type="text" name="contract_value" inputmode="numeric" placeholder="25,000"></div>
+            <span class="field-label">Rough is fine</span>
+          </div>
+          <div class="form-group">
+            <label>How would it arrive? <span class="opt">(optional)</span></label>
+            <div class="choice-grid cols-1">
+              <label class="choice-item"><input type="radio" name="payment_schedule" value="One payment"><span>One payment</span></label>
+              <label class="choice-item"><input type="radio" name="payment_schedule" value="Quarterly"><span>Quarterly, up to 4 tranches</span></label>
+              <label class="choice-item"><input type="radio" name="payment_schedule" value="Other/unsure"><span>Something else, or unsure</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:0;">
+          <label>Tell us about it <span class="opt">(optional)</span></label>
+          <textarea name="source_detail" placeholder="Who the payer is, what the work is, and whether anything is already signed. If you have more than one option, list them."></textarea>
+        </div>
+      </div>
+
+      <!-- 4. CENSUS BASICS -->
       <div class="fieldset">
         <div class="fieldset-title">Census basics</div>
         <p class="fieldset-note">Carriers rate on age and location, so these three fields determine almost everything about the number that comes back.</p>
@@ -470,7 +564,7 @@
         </div>
       </div>
 
-      <!-- 4. WHO NEEDS COVERAGE -->
+      <!-- 5. WHO NEEDS COVERAGE -->
       <div class="fieldset">
         <div class="fieldset-title">Who needs coverage</div>
 
@@ -491,7 +585,7 @@
         </div>
       </div>
 
-      <!-- 5. CURRENT COVERAGE -->
+      <!-- 6. CURRENT COVERAGE -->
       <div class="fieldset">
         <div class="fieldset-title">Current coverage</div>
 
@@ -512,7 +606,7 @@
         </div>
       </div>
 
-      <!-- 6. ANYTHING ELSE -->
+      <!-- 7. ANYTHING ELSE -->
       <div class="fieldset" style="margin-bottom:1.5rem;">
         <div class="fieldset-title">Anything else</div>
         <div class="form-group" style="margin-bottom:0;">
@@ -523,13 +617,13 @@
 
       <button type="submit" class="submit-btn">Start my healthcare file</button>
       <p class="form-status" id="formStatus"></p>
-      <p class="form-fineprint">Submitting this starts a conversation. It is not an application, an enrollment, or a guarantee of coverage, and eligibility depends on your state and your membership status. Causeway is not an insurer. This page is general information, not insurance, tax, or legal advice.</p>
+      <p class="form-fineprint">Submitting this starts a conversation. It is not an application, an enrollment, or a guarantee of coverage. Eligibility depends on your state, your membership status, and a qualifying contract or income source of at least $25,000 a year. Causeway is not an insurer. The employment and contract structure described on this page is being finalized with counsel and specific terms may change. This page is general information, not insurance, tax, or legal advice.</p>
     </form>
 
     <div class="success-state" id="successState">
       <div class="success-check">✓</div>
       <h3>Your file's started</h3>
-      <p>We've got your details. We'll confirm your membership, check what's available in your state, and reach out to set up a short call to walk through options. Keep an eye on your inbox.</p>
+      <p>We've got your details. We'll confirm your membership, check what's available in your state, and reach out to set up a short call. We'll walk through plan options and the contract side together. Keep an eye on your inbox.</p>
     </div>
   </div>
 </section>
@@ -590,7 +684,7 @@
   });
 
   // ─── FORM SUBMISSION ───
-  const GOOGLE_SCRIPT_URL = '';  // <-- paste this form's own Apps Script /exec URL here
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwpjiVCfphXRmvBpT3w3U8V7EkXrAXyou5yZD9jmd3IuYWZEcDTC6BddXZKkmlJUcqw0A/exec';
 
   document.getElementById('onboardForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -607,6 +701,10 @@
       dob: form.dob.value.trim(),
       zip: form.zip.value.trim(),
       gender: (form.querySelector('input[name="gender"]:checked') || {}).value || '',
+      has_source: (form.querySelector('input[name="has_source"]:checked') || {}).value || '',
+      contract_value: form.contract_value.value.trim(),
+      payment_schedule: (form.querySelector('input[name="payment_schedule"]:checked') || {}).value || '',
+      source_detail: form.source_detail.value.trim(),
       coverage_tier: (form.querySelector('input[name="coverage_tier"]:checked') || {}).value || '',
       dependents: form.dependents.value.trim(),
       current_plan: form.current_plan.value.trim(),
