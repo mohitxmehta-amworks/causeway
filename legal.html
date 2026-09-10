@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Causeway | Legal & Formation</title>
+<title>Causeway | Legal</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -77,60 +77,30 @@
   .page-hero p { font-size: 1.15rem; line-height: 1.7; color: var(--muted); max-width: 620px; animation: riseIn 0.9s ease 0.25s both; }
   .page-hero .lede-strong { color: var(--text); margin-top: 1rem; font-size: 1.05rem; }
 
-  /* ─── FORMATION (feature) ─── */
-  #formation { background: var(--cream); }
-  .formation-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 1rem; }
-  .formation-copy h2 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; margin-bottom: 1.2rem; }
-  .formation-copy p { font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
-  .formation-copy ul { list-style: none; margin-top: 1.4rem; display: flex; flex-direction: column; gap: 0.7rem; }
-  .formation-copy li { font-size: 0.92rem; color: var(--text); padding-left: 1.5rem; position: relative; }
-  .formation-copy li::before { content: ''; position: absolute; left: 0; top: 0.45em; width: 0.6rem; height: 0.6rem; background: var(--orange); border-radius: 2px; }
+  /* ─── WHAT WE DO ─── */
+  #triage { background: var(--cream); }
+  .triage-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 1rem; }
+  .triage-copy h2 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; margin-bottom: 1.2rem; }
+  .triage-copy p { font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+  .triage-copy ul { list-style: none; margin-top: 1.4rem; display: flex; flex-direction: column; gap: 0.7rem; }
+  .triage-copy li { font-size: 0.92rem; color: var(--text); padding-left: 1.5rem; position: relative; }
+  .triage-copy li::before { content: ''; position: absolute; left: 0; top: 0.45em; width: 0.6rem; height: 0.6rem; background: var(--orange); border-radius: 2px; }
 
-  .price-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 2.6rem 2.2rem; box-shadow: 0 12px 40px rgba(0,0,0,0.05); position: relative; overflow: hidden; }
-  .price-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--blue), var(--orange)); }
-  .price-card .kicker { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
-  .price-card .headline { display: flex; align-items: baseline; gap: 0.4rem; margin-bottom: 0.4rem; }
-  .price-card .amount { font-family: 'Instrument Serif', serif; font-size: 3.4rem; font-weight: 400; line-height: 1; color: var(--blue); }
-  .price-card .per { font-size: 0.95rem; font-weight: 600; color: var(--muted); }
-  .price-card .plus { font-size: 0.92rem; color: var(--text); margin-bottom: 1.6rem; line-height: 1.5; }
-  .price-card .plus strong { font-weight: 700; }
-  .price-card .divider { height: 1px; background: var(--border); margin: 1.4rem 0; }
-  .price-card .detail { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
-  .price-card .cta { display: block; text-align: center; margin-top: 1.8rem; background: var(--blue); color: white; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.04em; padding: 0.9rem 1.5rem; border-radius: 8px; text-decoration: none; transition: all 0.25s; }
-  .price-card .cta:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(36,36,255,0.25); }
+  .info-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 2.6rem 2.2rem; box-shadow: 0 12px 40px rgba(0,0,0,0.05); position: relative; overflow: hidden; }
+  .info-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--blue), var(--orange)); }
+  .info-card .kicker { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.2rem; }
+  .info-card h3 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 1.6rem; line-height: 1.2; margin-bottom: 1rem; }
+  .info-card .step-list { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; margin-top: 0.4rem; }
+  .info-card .step-list li { display: flex; gap: 0.9rem; align-items: flex-start; font-size: 0.9rem; color: var(--text); line-height: 1.5; }
+  .info-card .step-list .n { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--blue); color: white; font-family: 'Instrument Serif', serif; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; }
+  .info-card .detail { font-size: 0.82rem; color: var(--muted); line-height: 1.6; margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
 
-  /* ─── SERVICES ─── */
-  #services { background: var(--off-white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
-  .svc-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 2.2rem 1.8rem; transition: all 0.3s; position: relative; overflow: hidden; }
-  .svc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
-  .svc-card:hover::before { transform: scaleX(1); }
-  .svc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.06); }
-  .svc-icon { width: 44px; height: 44px; background: var(--off-white); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1.2rem; color: var(--blue); font-weight: 700; }
-  .svc-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.65rem; }
-  .svc-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
-  .svc-card .meta { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--blue); margin-top: 1rem; }
-
-  /* ─── INSURANCE BAND ─── */
-  #insurance { background: var(--dark); color: white; position: relative; }
-  #insurance::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--blue), var(--orange)); }
-  .ins-wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
-  .ins-copy .section-title { color: white; }
-  .ins-copy p { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 1rem; }
-  .ins-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; }
-  .ins-item { background: var(--dark); padding: 1.8rem 1.5rem; }
-  .ins-item h3 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 1.25rem; color: white; margin-bottom: 0.4rem; }
-  .ins-item p { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
-
-  /* ─── HOW IT WORKS ─── */
-  #how { background: var(--cream); }
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; position: relative; }
-  .steps::before { content: ''; position: absolute; top: 32px; left: calc(16.66% + 24px); right: calc(16.66% + 24px); height: 2px; background: linear-gradient(90deg, var(--blue), var(--orange)); z-index: 0; }
-  .step { position: relative; z-index: 1; text-align: center; }
-  .step-num { width: 64px; height: 64px; border-radius: 50%; background: var(--blue); color: white; font-family: 'Instrument Serif', serif; font-size: 1.6rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; box-shadow: 0 4px 16px rgba(36,36,255,0.2); }
-  .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
-  .step p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 280px; margin: 0 auto; }
-  .fineprint { font-size: 0.82rem; color: var(--muted); line-height: 1.6; max-width: 760px; margin: 3rem auto 0; text-align: center; }
+  /* ─── SCOPE ─── */
+  #scope { background: var(--off-white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .scope-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 0.9rem; max-width: 680px; }
+  .scope-list li { font-size: 0.95rem; color: var(--text); line-height: 1.6; padding-left: 1.6rem; position: relative; }
+  .scope-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 0.7rem; height: 2px; background: var(--muted); }
+  .fineprint { font-size: 0.82rem; color: var(--muted); line-height: 1.6; max-width: 680px; margin-top: 2.5rem; }
 
   /* ─── CTA STRIP ─── */
   #cta { background: var(--blue); color: white; text-align: center; }
@@ -151,16 +121,11 @@
     .nav-logo { font-size: 1.3rem; }
     .nav-links { display: none; }
     .hamburger { display: block; }
-    .formation-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
-    .ins-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+    .triage-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
   }
   @media (max-width: 768px) {
     section { padding: 4rem 1.5rem; }
     .page-hero { padding: 8rem 1.5rem 3rem; }
-    .svc-grid { grid-template-columns: 1fr; }
-    .steps { grid-template-columns: 1fr; gap: 2.5rem; }
-    .steps::before { display: none; }
-    .ins-list { grid-template-columns: 1fr; }
     footer { flex-direction: column; text-align: center; padding: 1.5rem; }
   }
 
@@ -198,137 +163,67 @@
 <!-- HERO -->
 <header class="page-hero">
   <div class="container">
-    <p class="section-label">Legal &amp; Formation</p>
-    <h1>The legal side, <em>handled.</em></h1>
-    <p>Setting up your business, reviewing the deals in front of you, and getting the right protection in place, so you can focus on the work.</p>
-    <p class="lede-strong">Work directly with vetted attorneys, at member rates. Causeway helps you get to the right one for what you need. Straightforward pricing, no retainer required to start.</p>
+    <p class="section-label">Legal</p>
+    <h1>Start by figuring out <em>what you need.</em></h1>
+    <p>Most creators are not sure whether the thing in front of them is a legal problem, a paperwork problem, or nothing at all. That is the part we help with.</p>
+    <p class="lede-strong">Causeway is not a law firm. We do not give legal advice. We help you work out what kind of help you need, or whether you need any, and connect you with independent attorneys who work with creators.</p>
   </div>
 </header>
 
-<!-- FORMATION -->
-<section id="formation">
-  <div class="container">
-    <p class="section-label">Business formation</p>
-    <div class="formation-wrap">
-      <div class="formation-copy">
-        <h2>Start your business the right way.</h2>
-        <p>Once your work starts earning, an LLC separates your business from your personal life: cleaner finances, more credibility with partners, and a real foundation to build on.</p>
-        <p>Causeway connects you with a vetted attorney who handles the whole formation end to end, so you don't have to figure out state paperwork on your own.</p>
-        <ul>
-          <li>LLC formation, filed in your state</li>
-          <li>Operating agreement &amp; EIN</li>
-          <li>Registered agent &amp; ongoing maintenance guidance</li>
-          <li>A clear next-steps checklist</li>
-        </ul>
-      </div>
-      <div class="price-card">
-        <p class="kicker">LLC Formation</p>
-        <div class="headline"><span class="amount">$1,000</span><span class="per">flat</span></div>
-        <p class="plus">plus state filing fees, typically <strong>$100–$400</strong>, depending on where you file.</p>
-        <div class="divider"></div>
-        <p class="detail">One flat fee, start to finish. The attorney we place you with prepares and files everything, then hands you clean formation documents and what to do next.</p>
-        <a href="membership.html" class="cta">Start my LLC</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="container">
-    <p class="section-label">Ongoing support</p>
-    <h2 class="section-title">Beyond formation.</h2>
-    <p class="section-sub">As your business grows, Causeway connects you with vetted legal professionals for whatever comes up, at rates built for creators.</p>
-
-    <div class="svc-grid">
-      <div class="svc-card">
-        <div class="svc-icon">§</div>
-        <h3>Ongoing counsel</h3>
-        <p>We connect you with an attorney for your business as questions come up: structure, partnerships, and the day-to-day of running a creator business.</p>
-        <p class="meta">Member rates</p>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">✎</div>
-        <h3>Contract review</h3>
-        <p>An attorney reviews brand deals, sponsorships, and collaborations before you sign, plus you get templates to reuse so you're not starting from scratch.</p>
-        <p class="meta">Per review or included</p>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">◈</div>
-        <h3>Insurance, procured</h3>
-        <p>We help you get the right coverage in place (media liability and business insurance) matched to the kind of work you do.</p>
-        <p class="meta">Procured through Causeway</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INSURANCE BAND -->
-<section id="insurance">
-  <div class="container">
-    <div class="ins-wrap">
-      <div class="ins-copy">
-        <p class="section-label">Protection</p>
-        <h2 class="section-title">Coverage that fits your work.</h2>
-        <p>An LLC protects your business. Insurance protects you when the work itself draws risk, the piece independent creators most often go without.</p>
-        <p>We help you get covered, matched to what you actually do.</p>
-      </div>
-      <ul class="ins-list">
-        <li class="ins-item">
-          <h3>Media liability</h3>
-          <p>For the risks that come with publishing, matched to your reach and format.</p>
-        </li>
-        <li class="ins-item">
-          <h3>Business insurance</h3>
-          <p>General coverage for the business you're building around your work.</p>
-        </li>
-        <li class="ins-item">
-          <h3>Matched to you</h3>
-          <p>We help size the right coverage rather than a one-size policy.</p>
-        </li>
-        <li class="ins-item">
-          <h3>Procured through Causeway</h3>
-          <p>We handle getting you covered, so it's one less thing to source alone.</p>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how">
+<!-- WHAT WE DO -->
+<section id="triage">
   <div class="container">
     <p class="section-label">How it works</p>
-    <h2 class="section-title">Simple to start.</h2>
-    <p class="section-sub">No retainer to begin, no jargon. We start with what you need today and grow from there.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Tell us where you're at</h3>
-        <p>A quick call about your business, the deals in front of you, and what you're worried about.</p>
+    <div class="triage-wrap">
+      <div class="triage-copy">
+        <h2>Tell us what is going on.</h2>
+        <p>It does not need to be a clean question. Things rarely arrive that way. Sometimes it is a contract you were sent, sometimes it is a message you are not sure how to read, sometimes it is a nagging sense that something should have been set up a while ago.</p>
+        <p>Members come to us about:</p>
+        <ul>
+          <li>Contracts and negotiation</li>
+          <li>Media liability and publishing risk</li>
+          <li>Privacy and data questions</li>
+          <li>Entity formation and business structure</li>
+          <li>Nonprofit compliance</li>
+          <li>Templates for routine paperwork</li>
+        </ul>
       </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Get set up</h3>
-        <p>We connect you with the right expert for formation, contracts, and coverage, at member rates, quoted up front.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Stay covered</h3>
-        <p>Your legal expert stays on call as your work grows, so you're never figuring it out on your own.</p>
+      <div class="info-card">
+        <p class="kicker">What happens next</p>
+        <h3>From a rough question to a clear one.</h3>
+        <ul class="step-list">
+          <li><span class="n">1</span><span>You describe the situation. A few sentences is plenty.</span></li>
+          <li><span class="n">2</span><span>We read it and come back with what we think the actual question is.</span></li>
+          <li><span class="n">3</span><span>If it calls for a lawyer, we introduce you to one. If it does not, we say so.</span></li>
+          <li><span class="n">4</span><span>You take it from there with them directly.</span></li>
+        </ul>
+        <p class="detail">Attorneys we introduce you to are independent and separately responsible for their own advice and their own fees.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <p class="fineprint">Causeway connects members with vetted legal professionals and helps procure insurance coverage. Formation is a flat fee plus state filing fees; other services are quoted up front. This page is general information, not legal advice.</p>
+<!-- SCOPE -->
+<section id="scope">
+  <div class="container">
+    <p class="section-label">Where the line sits</p>
+    <h2 class="section-title">What we do not do.</h2>
+    <p class="section-sub">Worth being plain about, because it shapes what you should expect from us.</p>
+    <ul class="scope-list">
+      <li>We do not give legal advice or act as your attorney.</li>
+      <li>We do not draft, review, or negotiate your documents.</li>
+      <li>We do not represent you or take on responsibility for how a matter turns out.</li>
+      <li>We do not decide for you whether to engage counsel, and we do not sit between you and the attorney once you do.</li>
+    </ul>
+    <p class="fineprint">Causeway is not a law firm and does not provide legal advice or legal services. Nothing on this page creates an attorney-client relationship. This page is general information only.</p>
   </div>
 </section>
 
 <!-- CTA -->
 <section id="cta">
   <div class="container">
-    <h2 class="section-title">Get the legal side handled.</h2>
-    <p>One short call to figure out what you need: formation, contracts, coverage, or all three.</p>
+    <h2 class="section-title">Not sure where to start?</h2>
+    <p>That is usually the right time to ask. Members get a short intake form and we take it from there.</p>
     <a href="membership.html" class="cta-btn">Become a member</a>
   </div>
 </section>
