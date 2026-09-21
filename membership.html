@@ -197,27 +197,6 @@
   .conditional { display: none; margin-top: 1.15rem; padding-left: 1rem; border-left: 2px solid rgba(36,36,255,0.3); }
   .conditional.show { display: block; animation: riseIn 0.4s ease both; }
 
-  /* ─── CONSENT ─── */
-  .consent-item {
-    display: flex; align-items: flex-start; gap: 0.7rem;
-    font-size: 0.85rem; line-height: 1.5; color: rgba(255,255,255,0.7);
-    cursor: pointer;
-  }
-  .consent-item input {
-    -webkit-appearance: none; appearance: none; margin: 0.15rem 0 0 0;
-    width: 18px; height: 18px; flex-shrink: 0; border-radius: 5px;
-    border: 1.5px solid rgba(255,255,255,0.35); background: transparent;
-    cursor: pointer; display: grid; place-content: center;
-  }
-  .consent-item input::before {
-    content: ""; width: 10px; height: 10px; transform: scale(0);
-    transition: transform 0.12s; box-shadow: inset 1em 1em white;
-    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-  }
-  .consent-item input:checked { background: var(--blue); border-color: var(--blue); }
-  .consent-item input:checked::before { transform: scale(1); }
-  .consent-item a { color: var(--blue-light); text-decoration: underline; }
-
   /* ─── SUBMIT ─── */
   .submit-btn {
     width: 100%; padding: 1.1rem; margin-top: 1.5rem;
@@ -283,6 +262,7 @@
 <nav>
   <a href="index.html" class="nav-logo">Causeway</a>
   <ul class="nav-links">
+    <li><a href="index.html#the-problem">The Problem</a></li>
     <li><a href="accounting.html">Accounting</a></li>
     <li><a href="legal.html">Legal</a></li>
     <li><a href="index.html#how-it-works">How It Works</a></li>
@@ -296,6 +276,7 @@
 <div class="drawer-overlay" id="drawerOverlay"></div>
 <div class="drawer" id="drawer">
   <div class="drawer-brand">Causeway</div>
+  <a href="index.html#the-problem">The Problem</a>
   <a href="accounting.html">Accounting</a>
   <a href="legal.html">Legal</a>
   <a href="index.html#how-it-works">How It Works</a>
@@ -535,14 +516,14 @@
         </div>
 
         <div class="form-group">
-          <label class="consent-item">
+          <label class="choice-item">
             <input type="checkbox" name="consent_contact" required>
             <span>I'd like Causeway to reach out about membership and the services I selected. <span class="req">*</span></span>
           </label>
         </div>
 
         <div class="form-group">
-          <label class="consent-item">
+          <label class="choice-item">
             <input type="checkbox" name="consent_updates">
             <span>Keep me in the loop on community events, cohorts, and Causeway news. <span style="color:rgba(255,255,255,0.3);">(optional)</span></span>
           </label>

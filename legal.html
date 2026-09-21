@@ -97,9 +97,9 @@
 
   /* ─── SCOPE ─── */
   #scope { background: var(--off-white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .scope-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 0.9rem; max-width: 680px; }
-  .scope-list li { font-size: 0.95rem; color: var(--text); line-height: 1.6; padding-left: 1.6rem; position: relative; }
-  .scope-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 0.7rem; height: 2px; background: var(--muted); }
+  .scope-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 0.7rem; max-width: 680px; }
+  .scope-list li { font-size: 0.92rem; color: var(--text); padding-left: 1.5rem; position: relative; }
+  .scope-list li::before { content: ''; position: absolute; left: 0; top: 0.45em; width: 0.6rem; height: 0.6rem; background: var(--orange); border-radius: 2px; }
   .fineprint { font-size: 0.82rem; color: var(--muted); line-height: 1.6; max-width: 680px; margin-top: 2.5rem; }
 
   /* ─── CTA STRIP ─── */
@@ -142,6 +142,7 @@
 <nav>
   <a href="index.html" class="nav-logo">Causeway</a>
   <ul class="nav-links">
+    <li><a href="index.html#the-problem">The Problem</a></li>
     <li><a href="accounting.html">Accounting</a></li>
     <li><a href="legal.html" class="active">Legal</a></li>
     <li><a href="index.html#how-it-works">How It Works</a></li>
@@ -155,6 +156,7 @@
 <div class="drawer-overlay" id="drawerOverlay"></div>
 <div class="drawer" id="drawer">
   <div class="drawer-brand">Causeway</div>
+  <a href="index.html#the-problem">The Problem</a>
   <a href="accounting.html">Accounting</a>
   <a href="legal.html">Legal</a>
   <a href="index.html#how-it-works">How It Works</a>
@@ -168,7 +170,7 @@
     <p class="section-label">Legal</p>
     <h1>Start by figuring out <em>what you need.</em></h1>
     <p>Most creators are not sure whether the thing in front of them is a legal problem, a paperwork problem, or nothing at all. That is the part we help with.</p>
-    <p class="lede-strong">Causeway is not a law firm. We do not give legal advice. We help you work out what kind of help you need, or whether you need any, and connect you with independent attorneys who work with creators.</p>
+    <p class="lede-strong">Causeway is not a law firm. We do not give legal advice. We help you work out what kind of help you need, and connect you with independent attorneys who work with creators.</p>
   </div>
 </header>
 
@@ -179,7 +181,7 @@
     <div class="triage-wrap">
       <div class="triage-copy">
         <h2>Tell us what is going on.</h2>
-        <p>It does not need to be a clean question. Things rarely arrive that way. Sometimes it is a contract you were sent, sometimes it is a message you are not sure how to read, sometimes it is a nagging sense that something should have been set up a while ago.</p>
+        <p>It does not need to be a clean question. Sometimes it is a contract you were sent, a message you don’t understand, or a concern about potential risk.</p>
         <p>Members come to us about:</p>
         <ul>
           <li>Contracts and negotiation</li>
@@ -191,12 +193,11 @@
         </ul>
       </div>
       <div class="info-card">
-        <p class="kicker">What happens next</p>
-        <h3>From a rough question to a clear one.</h3>
+        <p class="kicker">How it works</p>
         <ul class="step-list">
-          <li><span class="n">1</span><span>You describe the situation. A few sentences is plenty.</span></li>
-          <li><span class="n">2</span><span>We read it and come back with what we think the actual question is.</span></li>
-          <li><span class="n">3</span><span>If it calls for a lawyer, we introduce you to one. If it does not, we say so.</span></li>
+          <li><span class="n">1</span><span>You describe the situation – a few sentences is plenty.</span></li>
+          <li><span class="n">2</span><span>We read it and come back with what we think the actual question is, and any immediate follow up questions.</span></li>
+          <li><span class="n">3</span><span>If you need a lawyer, we introduce you to one with the relevant experience for your question (contract negotiation, media liability, non-profit compliance, etc.).</span></li>
           <li><span class="n">4</span><span>You take it from there with them directly.</span></li>
         </ul>
         <p class="detail">Attorneys we introduce you to are independent and separately responsible for their own advice and their own fees.</p>
@@ -208,14 +209,12 @@
 <!-- SCOPE -->
 <section id="scope">
   <div class="container">
-    <p class="section-label">Where the line sits</p>
     <h2 class="section-title">What we do not do.</h2>
-    <p class="section-sub">Worth being plain about, because it shapes what you should expect from us.</p>
     <ul class="scope-list">
       <li>We do not give legal advice or act as your attorney.</li>
-      <li>We do not draft, review, or negotiate your documents.</li>
+      <li>We do not draft or negotiate your documents.</li>
       <li>We do not represent you or take on responsibility for how a matter turns out.</li>
-      <li>We do not decide for you whether to engage counsel, and we do not sit between you and the attorney once you do.</li>
+      <li>We do not decide for you whether to engage counsel, and we do not sit between you and an attorney if you choose to engage one.</li>
     </ul>
     <p class="fineprint">Causeway is not a law firm and does not provide legal advice or legal services. Nothing on this page creates an attorney-client relationship. This page is general information only.</p>
   </div>
