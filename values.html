@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Causeway | Healthcare (Coming Soon)</title>
+<title>Causeway | Values</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -65,29 +64,27 @@
 
   /* ─── PAGE HERO ─── */
   .page-hero {
-    padding: 10rem 2rem 6rem;
-    min-height: 78vh;
-    display: flex;
-    align-items: center;
+    padding: 10rem 2rem 4rem;
     background:
       radial-gradient(ellipse 60% 50% at 20% 40%, rgba(36,36,255,0.05) 0%, transparent 100%),
       radial-gradient(ellipse 40% 45% at 85% 60%, rgba(255,75,43,0.035) 0%, transparent 100%),
       linear-gradient(175deg, #faf8f4 0%, #f0ede6 55%, #f5f2eb 100%);
     border-bottom: 1px solid var(--border);
   }
-  .page-hero .container { max-width: 720px; }
+  .page-hero .container { max-width: 820px; }
   .page-hero h1 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(2.6rem, 5vw, 4rem); line-height: 1.08; margin-bottom: 1.4rem; animation: riseIn 0.9s ease 0.1s both; }
   .page-hero h1 em { font-style: italic; color: var(--blue); }
   .page-hero p { font-size: 1.15rem; line-height: 1.7; color: var(--muted); max-width: 620px; animation: riseIn 0.9s ease 0.25s both; }
   .page-hero .lede-strong { color: var(--text); margin-top: 1rem; font-size: 1.05rem; }
 
-  .badge { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); background: rgba(36,36,255,0.08); border: 1px solid rgba(36,36,255,0.18); padding: 0.5rem 0.9rem; border-radius: 999px; margin-bottom: 1.6rem; animation: riseIn 0.9s ease 0 both; }
-  .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
-
-  .member-note { margin-top: 1.8rem; padding: 1.05rem 1.3rem; background: rgba(36,36,255,0.06); border-left: 3px solid var(--blue); border-radius: 0 8px 8px 0; font-size: 0.95rem; line-height: 1.65; color: var(--text); max-width: 620px; animation: riseIn 0.9s ease 0.4s both; }
-  .member-note strong { font-weight: 600; }
-  .member-note a { color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1.5px solid rgba(36,36,255,0.3); }
-  .member-note a:hover { border-bottom-color: var(--blue); }
+  /* ─── VALUES ─── */
+  #values { background: var(--cream); }
+  .values-list { list-style: none; max-width: 720px; display: flex; flex-direction: column; gap: 2.2rem; counter-reset: v; }
+  .values-list li { position: relative; padding-left: 3.2rem; counter-increment: v; }
+  .values-list li::before { content: counter(v); position: absolute; left: 0; top: 0.1rem; width: 2.1rem; height: 2.1rem; border-radius: 50%; background: var(--blue); color: white; font-family: 'Instrument Serif', serif; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; }
+  .values-list h2 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 1.6rem; line-height: 1.2; margin-bottom: 0.6rem; }
+  .values-list p { font-size: 1rem; color: var(--muted); line-height: 1.75; }
+  .values-note { max-width: 720px; margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--border); font-size: 0.95rem; color: var(--muted); line-height: 1.7; }
 
   /* ─── CTA STRIP ─── */
   #cta { background: var(--blue); color: white; text-align: center; }
@@ -103,21 +100,23 @@
   .footer-links { display: flex; gap: 1.5rem; }
 
   /* ─── RESPONSIVE ─── */
-  @media (max-width: 1220px) and (min-width: 1025px) {
-    nav { padding: 0 2rem; }
-    .nav-links { gap: 1.5rem; }
-    .nav-links a { font-size: 0.78rem; }
-  }
-  @media (max-width: 1024px) {
+  @media (max-width: 900px) {
     nav { padding: 0 1.5rem; height: 68px; }
     .nav-logo { font-size: 1.3rem; }
     .nav-links { display: none; }
     .hamburger { display: block; }
+    .triage-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
   }
   @media (max-width: 768px) {
     section { padding: 4rem 1.5rem; }
-    .page-hero { padding: 8rem 1.5rem 4rem; min-height: unset; }
+    .page-hero { padding: 8rem 1.5rem 3rem; }
     footer { flex-direction: column; text-align: center; padding: 1.5rem; }
+  }
+
+  @media (max-width: 1220px) and (min-width: 1025px) {
+    nav { padding: 0 2rem; }
+    .nav-links { gap: 1.5rem; }
+    .nav-links a { font-size: 0.78rem; }
   }
 </style>
 </head>
@@ -130,6 +129,7 @@
     <li><a href="accounting.html">Accounting</a></li>
     <li><a href="legal.html">Legal</a></li>
     <li><a href="index.html#how-it-works">How It Works</a></li>
+    <li><a href="values.html" class="active">Values</a></li>
     <li><a href="membership.html" class="cta-link">Become a Member</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -142,34 +142,44 @@
   <a href="accounting.html">Accounting</a>
   <a href="legal.html">Legal</a>
   <a href="index.html#how-it-works">How It Works</a>
+  <a href="values.html">Values</a>
   <a href="membership.html" class="drawer-cta">Become a Member</a>
 </div>
 
 <!-- HERO -->
 <header class="page-hero">
   <div class="container">
-    <span class="badge"><span class="dot"></span>Coming soon</span>
-    <p class="section-label">Healthcare</p>
-    <h1>Healthcare, <em>coming soon.</em></h1>
-    <p>We're working on it. Details aren't ready to share yet.</p>
-    <div class="member-note">
-      <strong>Not open yet.</strong> Become a Causeway member and we'll notify you as soon as this launches. <a href="membership.html">Fill out the membership form</a>.
-    </div>
+    <p class="section-label">Causeway Values</p>
+    <h1>What we hold ourselves <em>to.</em></h1>
+    <p>Causeway&rsquo;s mission is to improve public discourse by making it easier to create and distribute high quality, free expression. We believe a flourishing community of independent media is central to that aim.</p>
   </div>
 </header>
 
-<!-- CTA -->
-<section id="cta">
+<!-- VALUES -->
+<section id="values">
   <div class="container">
-    <h2 class="section-title">Not a member yet?</h2>
-    <p>Join as a Causeway member to hear when this is ready, and get access to legal and accounting support in the meantime.</p>
-    <a href="membership.html" class="cta-btn">Become a member</a>
+    <p class="section-sub" style="margin-bottom:3rem;">With that goal in mind, we aspire to hold ourselves and all partners or members of Causeway to the following values.</p>
+    <ol class="values-list">
+      <li>
+        <h2>A commitment to reality</h2>
+        <p>Not all free expression seeks to document reality. For that which does, there are many methods to produce something of value. Regardless of format or tactic, we expect all members of our community to use reasonable, data-informed, factual assessments when making direct representations about the world. It is unacceptable to knowingly or negligently report inaccurate information.</p>
+      </li>
+      <li>
+        <h2>A commitment to respecting democratic institutions</h2>
+        <p>We expect all members of our community to accept and respect the importance of a functioning democracy, including the importance of the rule of law. Actions or inducements to break the law or in some other way undermine the need for procedural justice is unacceptable.</p>
+      </li>
+      <li>
+        <h2>A commitment to prosocial outcomes</h2>
+        <p>We believe that the more authority one has, the more obligation one has to support the broader community. We aspire to take all appropriate care not to endanger or exploit the audiences or partners with whom we engage. We expect members of our community to act in the same way.</p>
+      </li>
+    </ol>
+    <p class="values-note">These values incorporate no partisan or ideological requirement; we encourage anyone who abides by these values to participate.</p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <span>Causeway © 2026</span>
+  <span>© 2026 Causeway. All rights reserved.</span>
   <span class="footer-links">
     <a href="accounting.html">Accounting</a>
     <a href="legal.html">Legal</a>
@@ -180,7 +190,6 @@
 </footer>
 
 <script>
-  // ─── MOBILE DRAWER ───
   const hamburger = document.getElementById('hamburger');
   const drawer = document.getElementById('drawer');
   const overlay = document.getElementById('drawerOverlay');

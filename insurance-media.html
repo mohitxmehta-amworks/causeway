@@ -305,6 +305,110 @@
   .gate-btn:hover { background: #e53e1f; color: white; }
   .choice-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
   @media (max-width: 768px) { .choice-grid.cols-3 { grid-template-columns: 1fr; } }
+
+  /* guard: keep choice pills flex even inside .form-group */
+  .form-group label.choice-item { display: flex !important; }
+  .form-group label.choice-item input { flex: 0 0 18px; }
+
+  /* ─── OPTIONAL BADGES ─── */
+  .opt-note {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.14);
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    margin-left: 0.5rem;
+    vertical-align: 2px;
+    white-space: nowrap;
+  }
+
+  /* ─── COLLAPSIBLE SECTIONS ─── */
+  .optional-intro {
+    padding: 1.1rem 1.3rem;
+    background: rgba(36,36,255,0.1);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.3rem;
+  }
+  .optional-intro strong { color: white; font-weight: 600; font-size: 0.88rem; }
+  .optional-intro p { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.65; margin-top: 0.35rem; }
+
+  .collapse {
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    margin-bottom: 0.8rem;
+    background: rgba(255,255,255,0.025);
+    overflow: hidden;
+  }
+  .collapse-head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Outfit', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .collapse-head:hover { background: rgba(255,255,255,0.03); }
+  .collapse-head .ch-text { flex: 1; }
+  .collapse-head .ch-title { display: block; font-size: 0.88rem; font-weight: 600; color: white; letter-spacing: 0.02em; }
+  .collapse-head .ch-sub { display: block; font-size: 0.76rem; color: rgba(255,255,255,0.45); margin-top: 0.25rem; line-height: 1.5; }
+  .collapse-chev { flex-shrink: 0; width: 11px; height: 11px; border-right: 2px solid rgba(255,255,255,0.5); border-bottom: 2px solid rgba(255,255,255,0.5); transform: rotate(45deg) translate(-2px,-2px); transition: transform 0.25s; }
+  .collapse.open .collapse-chev { transform: rotate(225deg) translate(-2px,-2px); }
+  .collapse.open { border-color: rgba(36,36,255,0.5); background: rgba(36,36,255,0.04); }
+  .collapse-body { display: none; padding: 0.3rem 1.2rem 1.4rem; }
+  .collapse.open .collapse-body { display: block; animation: riseIn 0.35s ease both; }
+  .collapse-body .fieldset-title { margin-top: 1.4rem; }
+
+  /* ─── REPEATING ROWS ─── */
+  .rep-row {
+    position: relative;
+    padding: 1.1rem 1.1rem 0.9rem;
+    border: 1px solid rgba(255,255,255,0.11);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.035);
+    margin-bottom: 0.7rem;
+  }
+  .rep-row .rep-num { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.75rem; display: block; }
+  .rep-remove {
+    position: absolute; top: 0.8rem; right: 0.85rem;
+    background: none; border: none; cursor: pointer;
+    color: rgba(255,255,255,0.35); font-size: 1.1rem; line-height: 1;
+    padding: 0.2rem 0.35rem; border-radius: 5px; transition: color 0.2s, background 0.2s;
+  }
+  .rep-remove:hover { color: var(--orange); background: rgba(255,75,43,0.12); }
+  .rep-row:first-child .rep-remove { display: none; }
+  .rep-add {
+    width: 100%;
+    padding: 0.75rem;
+    background: none;
+    border: 1.5px dashed rgba(255,255,255,0.22);
+    border-radius: 8px;
+    color: rgba(255,255,255,0.6);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .rep-add:hover { border-color: var(--blue); color: white; background: rgba(36,36,255,0.08); }
+  .rep-add:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  .split-total { font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-top: 0.6rem; text-align: right; }
+  .split-total.ok { color: #4ade80; }
+  .split-total.over { color: var(--orange); }
+
+  .sole-editor-toggle { margin-bottom: 0.9rem; }
 </style>
 </head>
 <body>
@@ -421,9 +525,15 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <label>Business / entity name <span class="opt">(if you have one)</span></label>
-          <input type="text" name="company_name" placeholder="LLC or business name, or leave blank">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Business / entity name <span class="opt">(if you have one)</span></label>
+            <input type="text" name="company_name" placeholder="LLC or business name, or leave blank">
+          </div>
+          <div class="form-group">
+            <label>Your title <span class="req">*</span></label>
+            <input type="text" name="position" required placeholder="Owner, Editor, Founder">
+          </div>
         </div>
 
         <div class="form-row">
@@ -549,7 +659,426 @@
         </div>
       </div>
 
-      <!-- 5. ANYTHING ELSE -->
+      <!-- 5. FULL UNDERWRITING (OPTIONAL, COLLAPSED) -->
+      <div class="fieldset">
+        <div class="fieldset-title">The rest of the underwriting questions</div>
+
+        <div class="optional-intro">
+          <strong>Every question below is optional.</strong>
+          <p>These are the questions the carrier will ask eventually. Answering them now gets you a faster and more accurate quote. Leave any of it blank and we'll work through it with you on a call. Nothing here blocks your submission.</p>
+        </div>
+
+        <!-- 5a. COMPANY DETAILS -->
+        <div class="collapse" id="col-company">
+          <button type="button" class="collapse-head" aria-expanded="false">
+            <span class="ch-text">
+              <span class="ch-title">Business details</span>
+              <span class="ch-sub">Address, financial year, where your revenue comes from</span>
+            </span>
+            <span class="collapse-chev"></span>
+          </button>
+          <div class="collapse-body">
+
+            <div class="form-group">
+              <label>Business address</label>
+              <input type="text" name="address_street" placeholder="Street address">
+              <span class="field-label">If you work from home, your home address is what the carrier needs. It isn't published anywhere.</span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" name="address_city">
+              </div>
+              <div class="form-group">
+                <label>County</label>
+                <input type="text" name="address_county">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>ZIP / postcode</label>
+                <input type="text" name="address_postcode">
+              </div>
+              <div class="form-group">
+                <label>Country</label>
+                <input type="text" name="address_country" placeholder="United States">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Financial year end <span class="opt-note">Most people: Dec 31</span></label>
+                <input type="text" name="fy_end" placeholder="December 31">
+              </div>
+              <div class="form-group">
+                <label>% of revenue earned outside the US</label>
+                <input type="text" name="revenue_intl_pct" inputmode="numeric" placeholder="0">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Profit or loss <span class="opt-note">Rough figures are fine</span></label>
+              <div class="form-row-3">
+                <div>
+                  <div class="input-prefix"><span>$</span><input type="text" name="profit_last" inputmode="numeric" placeholder="0"></div>
+                  <span class="field-label">Last full year</span>
+                </div>
+                <div>
+                  <div class="input-prefix"><span>$</span><input type="text" name="profit_current" inputmode="numeric" placeholder="0"></div>
+                  <span class="field-label">This year (est.)</span>
+                </div>
+                <div>
+                  <div class="input-prefix"><span>$</span><input type="text" name="profit_next" inputmode="numeric" placeholder="0"></div>
+                  <span class="field-label">Next year (est.)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Where does your revenue come from?</label>
+              <span class="field-label" style="margin-bottom:0.7rem;">Break your income into rough percentages. Should add up to 100.</span>
+              <div class="rep" id="splitRows" data-max="4">
+                <div class="rep-row">
+                  <button type="button" class="rep-remove" aria-label="Remove">&times;</button>
+                  <div class="form-row">
+                    <div>
+                      <input type="text" data-f="desc" placeholder="e.g. Sponsorships">
+                      <span class="field-label">Source</span>
+                    </div>
+                    <div>
+                      <input type="text" data-f="pct" class="split-pct" inputmode="numeric" placeholder="0">
+                      <span class="field-label">% of revenue</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="rep-row">
+                  <button type="button" class="rep-remove" aria-label="Remove">&times;</button>
+                  <div class="form-row">
+                    <div>
+                      <input type="text" data-f="desc" placeholder="e.g. Subscriptions">
+                      <span class="field-label">Source</span>
+                    </div>
+                    <div>
+                      <input type="text" data-f="pct" class="split-pct" inputmode="numeric" placeholder="0">
+                      <span class="field-label">% of revenue</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="rep-add" data-target="splitRows">+ Add another source</button>
+              <p class="split-total" id="splitTotal">Total: 0%</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 5b. CONTRACTS & PEOPLE -->
+        <div class="collapse" id="col-contracts">
+          <button type="button" class="collapse-head" aria-expanded="false">
+            <span class="ch-text">
+              <span class="ch-title">Contracts, clients and crew</span>
+              <span class="ch-sub">How you paper your work and who else touches it</span>
+            </span>
+            <span class="collapse-chev"></span>
+          </button>
+          <div class="collapse-body">
+
+            <div class="form-group">
+              <label>Do you take on client or commissioned work?</label>
+              <div class="choice-grid">
+                <label class="choice-item"><input type="radio" name="client_work" value="Yes" data-panel="projectsPanel" data-panel-on="Yes"><span>Yes</span></label>
+                <label class="choice-item"><input type="radio" name="client_work" value="No" data-panel="projectsPanel" data-panel-on="Yes"><span>No, only my own work</span></label>
+              </div>
+              <div class="conditional" id="projectsPanel">
+                <div class="form-group">
+                  <label>Your largest projects over the past three years <span class="opt-note">Up to 3</span></label>
+                  <div class="rep" id="projectRows" data-max="3">
+                    <div class="rep-row">
+                      <span class="rep-num">Project 1</span>
+                      <button type="button" class="rep-remove" aria-label="Remove">&times;</button>
+                      <div class="form-group">
+                        <input type="text" data-f="client" placeholder="Client name">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" data-f="work" placeholder="Nature of the work">
+                      </div>
+                      <div class="form-row">
+                        <div>
+                          <div class="input-prefix"><span>$</span><input type="text" data-f="value" inputmode="numeric" placeholder="0"></div>
+                          <span class="field-label">Annual contract value</span>
+                        </div>
+                        <div>
+                          <div class="input-prefix"><span>$</span><input type="text" data-f="income" inputmode="numeric" placeholder="0"></div>
+                          <span class="field-label">Annual income to you</span>
+                        </div>
+                      </div>
+                      <div class="form-group" style="margin-top:0.7rem; margin-bottom:0.4rem;">
+                        <input type="text" data-f="duration" placeholder="Duration, e.g. 6 months">
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="rep-add" data-target="projectRows">+ Add another project</button>
+                </div>
+
+                <div class="form-group">
+                  <label>Do clients sign off on deliverables before you publish or hand over?</label>
+                  <div class="choice-grid">
+                    <label class="choice-item"><input type="radio" name="client_signoff" value="Yes"><span>Yes, always</span></label>
+                    <label class="choice-item"><input type="radio" name="client_signoff" value="No"><span>Not always</span></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Do you always work under a written contract signed by the client?</label>
+              <div class="choice-grid cols-3">
+                <label class="choice-item"><input type="radio" name="written_contracts" value="Yes" data-panel="contractsPanel" data-panel-on="No"><span>Yes</span></label>
+                <label class="choice-item"><input type="radio" name="written_contracts" value="No" data-panel="contractsPanel" data-panel-on="No"><span>No</span></label>
+                <label class="choice-item"><input type="radio" name="written_contracts" value="N/A" data-panel="contractsPanel" data-panel-on="No"><span>No clients</span></label>
+              </div>
+              <div class="conditional" id="contractsPanel">
+                <div class="form-group" style="margin-bottom:0;">
+                  <label>When do you work without one, and why?</label>
+                  <textarea name="written_contracts_detail" placeholder="e.g. Small one-off shoots for repeat clients are handled over email."></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Are your contracts reviewed by a lawyer?</label>
+              <div class="choice-grid cols-3">
+                <label class="choice-item"><input type="radio" name="contracts_reviewed" value="Yes"><span>Yes</span></label>
+                <label class="choice-item"><input type="radio" name="contracts_reviewed" value="No"><span>No</span></label>
+                <label class="choice-item"><input type="radio" name="contracts_reviewed" value="N/A"><span>N/A</span></label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Do you ever accept liability beyond the value of the contract?</label>
+              <span class="field-label" style="margin-bottom:0.6rem;">Uncapped indemnities or liability for consequential loss. If you've never read a contract for this, answer no.</span>
+              <div class="choice-grid">
+                <label class="choice-item"><input type="radio" name="liability_above_value" value="Yes" data-panel="liabilityPanel" data-panel-on="Yes"><span>Yes</span></label>
+                <label class="choice-item"><input type="radio" name="liability_above_value" value="No" data-panel="liabilityPanel" data-panel-on="Yes"><span>No</span></label>
+              </div>
+              <div class="conditional" id="liabilityPanel">
+                <div class="form-group" style="margin-bottom:0;">
+                  <label>Roughly what share of your contracts, and what are they capped at?</label>
+                  <textarea name="liability_detail" placeholder="e.g. Around 20% of contracts, capped at 2x fees."></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Do you get written releases from people appearing in your content?</label>
+              <div class="choice-grid cols-3">
+                <label class="choice-item"><input type="radio" name="releases" value="Yes"><span>Always</span></label>
+                <label class="choice-item"><input type="radio" name="releases" value="Sometimes"><span>Sometimes</span></label>
+                <label class="choice-item"><input type="radio" name="releases" value="No"><span>No</span></label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Do you have a set process for clearing music rights?</label>
+              <div class="choice-grid cols-3">
+                <label class="choice-item"><input type="radio" name="music_clearance" value="Yes"><span>Yes</span></label>
+                <label class="choice-item"><input type="radio" name="music_clearance" value="No"><span>No</span></label>
+                <label class="choice-item"><input type="radio" name="music_clearance" value="N/A"><span>No music</span></label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Do you work with freelancers, crew or subcontractors? <span class="opt-note">Skip if you work solo</span></label>
+              <div class="choice-grid">
+                <label class="choice-item"><input type="radio" name="subcontractors" value="Yes" data-panel="subPanel" data-panel-on="Yes"><span>Yes</span></label>
+                <label class="choice-item"><input type="radio" name="subcontractors" value="No" data-panel="subPanel" data-panel-on="Yes"><span>No, just me</span></label>
+              </div>
+              <div class="conditional" id="subPanel">
+                <div class="form-group">
+                  <label>Roughly what % of this year's revenue goes to them?</label>
+                  <input type="text" name="sub_pct" inputmode="numeric" placeholder="0">
+                </div>
+                <div class="form-group">
+                  <label>Do you sign reciprocal hold harmless agreements with them?</label>
+                  <div class="choice-grid">
+                    <label class="choice-item"><input type="radio" name="sub_hold_harmless" value="Yes"><span>Yes</span></label>
+                    <label class="choice-item"><input type="radio" name="sub_hold_harmless" value="No"><span>No</span></label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Do you require them to carry their own E&amp;O and general liability insurance?</label>
+                  <div class="choice-grid">
+                    <label class="choice-item"><input type="radio" name="sub_insurance" value="Yes" data-panel="subLimitPanel" data-panel-on="Yes"><span>Yes</span></label>
+                    <label class="choice-item"><input type="radio" name="sub_insurance" value="No" data-panel="subLimitPanel" data-panel-on="Yes"><span>No</span></label>
+                  </div>
+                  <div class="conditional" id="subLimitPanel">
+                    <div class="form-group" style="margin-bottom:0;">
+                      <label>What limit do you require?</label>
+                      <div class="input-prefix"><span>$</span><input type="text" name="sub_limit" inputmode="numeric" placeholder="1,000,000"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Do you organize live events or conferences? <span class="opt-note">Skip if you don't</span></label>
+              <div class="choice-grid">
+                <label class="choice-item"><input type="radio" name="events" value="Yes" data-panel="eventsPanel" data-panel-on="Yes"><span>Yes</span></label>
+                <label class="choice-item"><input type="radio" name="events" value="No" data-panel="eventsPanel" data-panel-on="Yes"><span>No</span></label>
+              </div>
+              <div class="conditional" id="eventsPanel">
+                <div class="form-group">
+                  <label>Largest event you've run, and how many attended</label>
+                  <input type="text" name="events_largest" placeholder="e.g. Live taping at a 400-seat theater, 380 attendees">
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                  <label>How many do you run in a typical year?</label>
+                  <input type="text" name="events_per_year" placeholder="e.g. 2">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom:0;">
+              <label>Do you build, erect or install any physical structures? <span class="opt-note">Almost always no</span></label>
+              <span class="field-label" style="margin-bottom:0.6rem;">Sets, rigging, staging, scaffolding. The carrier asks everyone this.</span>
+              <div class="choice-grid">
+                <label class="choice-item"><input type="radio" name="physical_work" value="Yes" data-panel="physicalPanel" data-panel-on="Yes"><span>Yes</span></label>
+                <label class="choice-item"><input type="radio" name="physical_work" value="No" data-panel="physicalPanel" data-panel-on="Yes"><span>No</span></label>
+              </div>
+              <div class="conditional" id="physicalPanel">
+                <div class="form-row">
+                  <div class="form-group" style="margin-bottom:0;">
+                    <label>Maximum working height</label>
+                    <input type="text" name="max_height" placeholder="e.g. 12 ft">
+                  </div>
+                  <div class="form-group" style="margin-bottom:0;">
+                    <label>Maximum working depth</label>
+                    <input type="text" name="max_depth" placeholder="e.g. none">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 5c. EDITORIAL -->
+        <div class="collapse" id="col-editorial">
+          <button type="button" class="collapse-head" aria-expanded="false">
+            <span class="ch-text">
+              <span class="ch-title">Editorial and publishing</span>
+              <span class="ch-sub">What you publish, how it gets checked, who signs off</span>
+            </span>
+            <span class="collapse-chev"></span>
+          </button>
+          <div class="collapse-body">
+
+            <div class="form-group">
+              <label>Your channels, shows and publications</label>
+              <span class="field-label" style="margin-bottom:0.7rem;">Every place you publish under your own name or brand.</span>
+              <div class="rep" id="channelRows" data-max="8">
+                <div class="rep-row">
+                  <span class="rep-num">Channel 1</span>
+                  <button type="button" class="rep-remove" aria-label="Remove">&times;</button>
+                  <div class="form-group">
+                    <input type="text" data-f="title" placeholder="Title or channel name">
+                  </div>
+                  <div class="form-row">
+                    <div>
+                      <input type="text" data-f="reach" placeholder="e.g. 12k subscribers">
+                      <span class="field-label">Audience size</span>
+                    </div>
+                    <div>
+                      <input type="text" data-f="frequency" placeholder="e.g. Weekly">
+                      <span class="field-label">How often you publish</span>
+                    </div>
+                  </div>
+                  <div class="form-group" style="margin-top:0.7rem; margin-bottom:0.4rem;">
+                    <input type="text" data-f="distribution" placeholder="Where it reaches, e.g. US and Canada">
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="rep-add" data-target="channelRows">+ Add another channel</button>
+            </div>
+
+            <div class="form-group">
+              <label>How do you check accuracy, originality and sourcing before you publish?</label>
+              <textarea name="accuracy_process" placeholder="e.g. Two-source rule on any factual claim about a person; I keep recordings and notes for everything I run."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Do you have a legal review step before publishing?</label>
+              <textarea name="legal_review_process" placeholder="Describe it, or write 'none' if you don't have one. No answer here counts against you."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Do you use a media or entertainment lawyer to clear content?</label>
+              <div class="choice-grid">
+                <label class="choice-item"><input type="radio" name="media_lawyer" value="Yes" data-panel="lawyerPanel" data-panel-on="Yes"><span>Yes</span></label>
+                <label class="choice-item"><input type="radio" name="media_lawyer" value="No" data-panel="lawyerPanel" data-panel-on="Yes"><span>No</span></label>
+              </div>
+              <div class="conditional" id="lawyerPanel">
+                <div class="form-group" style="margin-bottom:0;">
+                  <label>Name and firm</label>
+                  <input type="text" name="lawyer_name" placeholder="Name, Firm">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Have you ever published something against your lawyer's advice?</label>
+              <div class="choice-grid cols-3">
+                <label class="choice-item"><input type="radio" name="against_advice" value="No"><span>No</span></label>
+                <label class="choice-item"><input type="radio" name="against_advice" value="Yes"><span>Yes</span></label>
+                <label class="choice-item"><input type="radio" name="against_advice" value="N/A"><span>No lawyer</span></label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Do you accept unsolicited submissions or user contributions? <span class="opt-note">Skip if you don't</span></label>
+              <textarea name="unsolicited_process" placeholder="If you do, how do you handle and vet them?"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Do you get written warranties from third-party news or footage sources? <span class="opt-note">Skip if you don't use them</span></label>
+              <div class="choice-grid cols-3">
+                <label class="choice-item"><input type="radio" name="source_warranties" value="Yes"><span>Yes</span></label>
+                <label class="choice-item"><input type="radio" name="source_warranties" value="No"><span>No</span></label>
+                <label class="choice-item"><input type="radio" name="source_warranties" value="N/A"><span>N/A</span></label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>How do you clear titles before publishing? <span class="opt-note">Optional</span></label>
+              <input type="text" name="title_clearance" placeholder="e.g. Search for existing use before naming a series">
+            </div>
+
+            <div class="form-group sole-editor-toggle">
+              <label>Who is your chief editor?</label>
+              <div class="choice-grid cols-1">
+                <label class="choice-item"><input type="checkbox" id="soleEditor" name="sole_editor" value="Yes"><span>I'm the sole editor</span></label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Editor name and what qualifies them</label>
+              <input type="text" name="editor_name" placeholder="Name">
+              <textarea name="editor_qualifications" style="margin-top:0.6rem;" placeholder="e.g. 8 years reporting at a daily paper, then independent since 2021."></textarea>
+            </div>
+
+            <div class="form-group" style="margin-bottom:0;">
+              <label>What are your correction and takedown procedures?</label>
+              <textarea name="editorial_controls" placeholder="e.g. Corrections appended and noted at the top of the post; takedown requests reviewed within 48 hours."></textarea>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. ANYTHING ELSE -->
       <div class="fieldset" style="margin-bottom:1.5rem;">
         <div class="fieldset-title">Anything else</div>
         <div class="form-group" style="margin-bottom:0;">
@@ -587,6 +1116,7 @@
     <a href="accounting.html">Accounting</a>
     <a href="legal.html">Legal</a>
     <a href="membership.html">Membership</a>
+    <a href="values.html">Values</a>
     <a href="index.html">Home</a>
   </span>
 </footer>
@@ -635,6 +1165,109 @@
     });
   });
 
+  // ─── COLLAPSIBLE SECTIONS ───
+  document.querySelectorAll('.collapse-head').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const box = this.closest('.collapse');
+      const open = box.classList.toggle('open');
+      this.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  // ─── GENERIC CONDITIONAL PANELS (data-panel / data-panel-on) ───
+  document.querySelectorAll('input[data-panel]').forEach(function(input) {
+    input.addEventListener('change', function() {
+      const panel = document.getElementById(this.dataset.panel);
+      if (!panel) return;
+      panel.classList.toggle('open', this.checked && this.value === this.dataset.panelOn);
+    });
+  });
+
+  // ─── REPEATING ROWS ───
+  function renumber(container) {
+    container.querySelectorAll('.rep-row').forEach(function(row, i) {
+      const n = row.querySelector('.rep-num');
+      if (n) n.textContent = n.textContent.replace(/\s\d+$/, '') + ' ' + (i + 1);
+    });
+    const addBtn = document.querySelector('.rep-add[data-target="' + container.id + '"]');
+    const max = parseInt(container.dataset.max, 10) || 99;
+    if (addBtn) addBtn.disabled = container.querySelectorAll('.rep-row').length >= max;
+  }
+
+  document.querySelectorAll('.rep-add').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const container = document.getElementById(this.dataset.target);
+      const max = parseInt(container.dataset.max, 10) || 99;
+      const rows = container.querySelectorAll('.rep-row');
+      if (rows.length >= max) return;
+      const clone = rows[0].cloneNode(true);
+      clone.querySelectorAll('input, textarea').forEach(function(el) { el.value = ''; });
+      container.appendChild(clone);
+      bindRemove(clone);
+      bindSplit(clone);
+      renumber(container);
+    });
+  });
+
+  function bindRemove(row) {
+    const btn = row.querySelector('.rep-remove');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+      const container = row.closest('.rep');
+      row.remove();
+      renumber(container);
+      updateSplitTotal();
+    });
+  }
+  document.querySelectorAll('.rep-row').forEach(bindRemove);
+  document.querySelectorAll('.rep').forEach(renumber);
+
+  // ─── REVENUE SPLIT TOTAL ───
+  function updateSplitTotal() {
+    let total = 0;
+    document.querySelectorAll('#splitRows .split-pct').forEach(function(el) {
+      const v = parseFloat(el.value.replace(/[^0-9.]/g, ''));
+      if (!isNaN(v)) total += v;
+    });
+    const out = document.getElementById('splitTotal');
+    out.textContent = 'Total: ' + (Math.round(total * 10) / 10) + '%';
+    out.className = 'split-total' + (total === 100 ? ' ok' : (total > 100 ? ' over' : ''));
+  }
+  function bindSplit(scope) {
+    scope.querySelectorAll('.split-pct').forEach(function(el) {
+      el.addEventListener('input', updateSplitTotal);
+    });
+  }
+  bindSplit(document);
+
+  // ─── SOLE EDITOR AUTOFILL ───
+  document.getElementById('soleEditor').addEventListener('change', function() {
+    const form = document.getElementById('onboardForm');
+    if (this.checked) {
+      const name = (form.first_name.value.trim() + ' ' + form.last_name.value.trim()).trim();
+      if (name) form.editor_name.value = name;
+    }
+  });
+
+  // ─── ROW SERIALIZATION ───
+  function collectRows(containerId, fields) {
+    return Array.from(document.querySelectorAll('#' + containerId + ' .rep-row')).map(function(row) {
+      const vals = fields.map(function(f) {
+        const el = row.querySelector('[data-f="' + f + '"]');
+        return el ? el.value.trim() : '';
+      });
+      return vals.some(Boolean) ? vals.join(' | ') : '';
+    }).filter(Boolean).join('\n');
+  }
+
+  function radio(form, name) {
+    return (form.querySelector('input[name="' + name + '"]:checked') || {}).value || '';
+  }
+  function val(form, name) {
+    const el = form.elements[name];
+    return el && typeof el.value === 'string' ? el.value.trim() : '';
+  }
+
   // ─── FORM SUBMISSION ───
   const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyt0RTFjEKzOnVHPl-CY6hm9uY22xjN7yDLiQB8ZFWA7_JD4FJzzI_0CgvliqNe0HkrfA/exec';
 
@@ -667,6 +1300,59 @@
       revenue_next: form.revenue_next.value.trim(),
       headcount: form.headcount.value.trim(),
       comments: form.comments.value.trim(),
+
+      // business details
+      position: val(form, 'position'),
+      address_street: val(form, 'address_street'),
+      address_city: val(form, 'address_city'),
+      address_county: val(form, 'address_county'),
+      address_postcode: val(form, 'address_postcode'),
+      address_country: val(form, 'address_country'),
+      fy_end: val(form, 'fy_end'),
+      revenue_intl_pct: val(form, 'revenue_intl_pct'),
+      profit_last: val(form, 'profit_last'),
+      profit_current: val(form, 'profit_current'),
+      profit_next: val(form, 'profit_next'),
+      revenue_split: collectRows('splitRows', ['desc', 'pct']),
+
+      // contracts, clients, crew
+      client_work: radio(form, 'client_work'),
+      projects: collectRows('projectRows', ['client', 'work', 'value', 'income', 'duration']),
+      client_signoff: radio(form, 'client_signoff'),
+      written_contracts: radio(form, 'written_contracts'),
+      written_contracts_detail: val(form, 'written_contracts_detail'),
+      contracts_reviewed: radio(form, 'contracts_reviewed'),
+      liability_above_value: radio(form, 'liability_above_value'),
+      liability_detail: val(form, 'liability_detail'),
+      releases: radio(form, 'releases'),
+      music_clearance: radio(form, 'music_clearance'),
+      subcontractors: radio(form, 'subcontractors'),
+      sub_pct: val(form, 'sub_pct'),
+      sub_hold_harmless: radio(form, 'sub_hold_harmless'),
+      sub_insurance: radio(form, 'sub_insurance'),
+      sub_limit: val(form, 'sub_limit'),
+      events: radio(form, 'events'),
+      events_largest: val(form, 'events_largest'),
+      events_per_year: val(form, 'events_per_year'),
+      physical_work: radio(form, 'physical_work'),
+      max_height: val(form, 'max_height'),
+      max_depth: val(form, 'max_depth'),
+
+      // editorial and publishing
+      channels: collectRows('channelRows', ['title', 'reach', 'frequency', 'distribution']),
+      accuracy_process: val(form, 'accuracy_process'),
+      legal_review_process: val(form, 'legal_review_process'),
+      media_lawyer: radio(form, 'media_lawyer'),
+      lawyer_name: val(form, 'lawyer_name'),
+      against_advice: radio(form, 'against_advice'),
+      unsolicited_process: val(form, 'unsolicited_process'),
+      source_warranties: radio(form, 'source_warranties'),
+      title_clearance: val(form, 'title_clearance'),
+      sole_editor: document.getElementById('soleEditor').checked ? 'Yes' : '',
+      editor_name: val(form, 'editor_name'),
+      editor_qualifications: val(form, 'editor_qualifications'),
+      editorial_controls: val(form, 'editorial_controls'),
+
       timestamp: new Date().toISOString()
     };
 
